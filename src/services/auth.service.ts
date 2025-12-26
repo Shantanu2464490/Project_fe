@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User, UserRole } from '../models/model';
- 
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private userSub = new BehaviorSubject<User | null>(null);
- 
+
   user$ = this.userSub.asObservable();
- 
+
   constructor() {
     this.restoreUser();
   }
+
   private restoreUser() {
     try {
       const hasStorage =
@@ -27,9 +28,11 @@ export class AuthService {
           }
         }
       }
-    } catch {}
+    } catch {
+
+    }
   }
- 
+
   isLoggedIn(): boolean {
     return !!this.userSub.value;
   }
@@ -45,7 +48,7 @@ export class AuthService {
   getCurrentUser(): User | null {
     return this.userSub.value;
   }
- 
+
   login(user: User) {
     this.userSub.next(user);
     try {
@@ -56,9 +59,10 @@ export class AuthService {
       ) {
         window.localStorage.setItem('currentUser', JSON.stringify(user));
       }
-    } catch {}
+    } catch {
+    }
   }
- 
+
   logout() {
     this.userSub.next(null);
     try {
@@ -70,6 +74,8 @@ export class AuthService {
         window.localStorage.removeItem('currentUser');
         window.localStorage.removeItem('auth');
       }
-    } catch {}
+    } catch {
+      
+    }
   }
 }
