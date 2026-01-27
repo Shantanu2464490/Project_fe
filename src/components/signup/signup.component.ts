@@ -27,8 +27,8 @@ export class SignupComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private AuthService: AuthService
-  ) { 
+    private AuthService: AuthService,
+  ) {
     this.form = this.fb.group(
       {
         name: ['', [Validators.required, Validators.minLength(3)]],
@@ -37,7 +37,7 @@ export class SignupComponent {
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
       },
-      { validators: this.checkPasswordMatch }
+      { validators: this.checkPasswordMatch },
     );
   }
 
@@ -89,17 +89,10 @@ export class SignupComponent {
         }
       } catch {}
 
-      this.AuthService.login(user);
-
       this.loading = false;
 
-      if (role === UserRole.ADMIN) {
-        this.router.navigate(['/admin/dashboard']);
-      } else if (role === UserRole.MANAGER) {
-        this.router.navigate(['/manager/dashboard']);
-      } else {
-        this.router.navigate(['/employee/dashboard']);
-      }
+      // Redirect to signin
+      this.router.navigate(['/signin']);
     }, 1500);
   }
 
