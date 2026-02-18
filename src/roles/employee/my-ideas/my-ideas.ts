@@ -22,7 +22,7 @@ import {
 })
 export class MyIdeas implements OnInit {
   ideas: Idea[] = [];
-  filterStatus: 'All' | 'Draft' | 'UnderReview' | 'Approved' = 'All';
+  filterStatus: 'All' | 'Rejected' | 'UnderReview' | 'Approved' = 'All';
 
   selected: Idea | null = null;
   comments: IdeaComment[] = [];
@@ -173,9 +173,9 @@ export class MyIdeas implements OnInit {
   }
 
   deleteIdea(idea: Idea) {
-    if (idea.status !== 'Draft' && idea.status !== 'UnderReview') {
+    if (idea.status !== 'Rejected' && idea.status !== 'UnderReview') {
       alert(
-        'You can only delete ideas that are in Draft or Under Review status.',
+        'You can only delete ideas that are in Rejected or Under Review status.',
       );
       return;
     }

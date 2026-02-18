@@ -22,7 +22,7 @@
         class="text-sm font-medium bg-transparent border-none focus:ring-0 cursor-pointer text-(--blue-500)"
       >
         <option value="All">All Ideas</option>
-        <option value="Draft">Draft</option>
+        <option value="Rejected">Rejected</option>
         <option value="UnderReview">Under Review</option>
         <option value="Approved">Approved</option>
         <option value="Rejected">Rejected</option>
@@ -107,10 +107,10 @@
               <span
                 class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider"
                 [ngClass]="{
-                    'bg-gray-100 text-gray-700': idea.status === 'Draft',
+                    'bg-gray-100 text-gray-700': idea.status === 'Rejected',
                     'bg-(--blue-100) text-(--blue-500)': idea.status === 'UnderReview',
                     'bg-green-100 text-green-700': idea.status === 'Approved',
-                    'bg-red-100 text-red-700': idea.status === 'Draft'
+                    'bg-red-100 text-red-700': idea.status === 'Rejected'
                   }"
               >
                 {{ idea.status === 'UnderReview' ? 'Under Review' : idea.status
@@ -200,9 +200,9 @@
           </div>
 
           <div class="flex items-center gap-2">
-            <!-- Delete button - only for Draft or UnderReview -->
+            <!-- Delete button - only for Rejected or UnderReview -->
             <button
-              *ngIf="idea.status === 'Draft' || idea.status === 'UnderReview'"
+              *ngIf="idea.status === 'Rejected' || idea.status === 'UnderReview'"
               (click)="deleteIdea(idea)"
               class="text-sm font-medium text-red-500 hover:text-red-700 hover:underline flex items-center gap-1"
               title="Delete idea"
@@ -263,8 +263,8 @@
               <div class="flex justify-between mb-1">
                 <span class="font-semibold">{{ r.reviewerName }}</span>
                 <span
-                  [class.text-green-600]="r.decision === 'Approve'"
-                  [class.text-red-600]="r.decision === 'Reject'"
+                  [class.text-green-600]="r.decision === 'Approved'"
+                  [class.text-red-600]="r.decision === 'Rejected'"
                   >{{ r.decision }}</span
                 >
               </div>

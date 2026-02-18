@@ -83,7 +83,7 @@ export class ReviewService {
       reviewerID: r.reviewerID || 0,
       reviewerName: r.reviewerName,
       feedback: r.feedback || '',
-      decision: r.decision || 'Reject',
+      decision: r.decision || 'Rejected',
       reviewDate: r.reviewDate || new Date().toISOString(),
     };
     return review;
@@ -149,7 +149,7 @@ export class ReviewService {
 
   changeIdeaStatus(
     ideaID: number | string,
-    status: 'Draft' | 'UnderReview' | 'Approved',
+    status: 'Rejected' | 'UnderReview' | 'Approved',
   ): Observable<any> {
     const payload = { status };
     return this.http.put(
@@ -160,7 +160,7 @@ export class ReviewService {
 
   setIdeaStatus(
     ideaID: number | string,
-    status: 'Draft' | 'UnderReview' | 'Approved',
+    status: 'Rejected' | 'UnderReview' | 'Approved',
   ) {
     // Deprecated - use changeIdeaStatus instead
     // This method is kept for backward compatibility but should be replaced with changeIdeaStatus

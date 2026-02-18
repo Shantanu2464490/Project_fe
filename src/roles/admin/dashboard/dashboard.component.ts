@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   totalEmployees = 0;
 
   totalIdeas = 0;
-  draftIdeas = 0;
+  rejectedIdeas = 0;
   underReviewIdeas = 0;
   approvedIdeas = 0;
 
@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     // Load ideas
     this.ideaService.getAllIdeas().subscribe((ideas) => {
       this.totalIdeas = ideas.length;
-      this.draftIdeas = ideas.filter((i) => i.status === 'Draft').length;
+      this.rejectedIdeas = ideas.filter((i) => i.status === 'Rejected').length;
       this.underReviewIdeas = ideas.filter((i) => i.status === 'UnderReview').length;
       this.approvedIdeas = ideas.filter((i) => i.status === 'Approved').length;
 
@@ -84,8 +84,8 @@ export class DashboardComponent implements OnInit {
 
   getStatusClass(status: string): string {
     switch (status) {
-      case 'Draft':
-        return 'status-draft';
+      case 'Rejected':
+        return 'status-rejected';
       case 'UnderReview':
         return 'status-review';
       case 'Approved':

@@ -1,13 +1,22 @@
 <div class="p-8 max-w-7xl mx-auto pt-20">
-
   <!-- Statistics Cards -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
     <!-- Users Card -->
-    <div class="bg-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-      <div class="text-5xl shrink-0"><img src="usersSVG.svg" alt="User Icon" class="w-13 h-13" /></div>
+    <div
+      class="bg-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+    >
+      <div class="text-5xl shrink-0">
+        <img src="usersSVG.svg" alt="User Icon" class="w-13 h-13" />
+      </div>
       <div class="flex-1">
-        <h3 class="text-sm font-semibold text-gray-500 m-0 mb-2 uppercase tracking-wide">Total Users</h3>
-        <div class="text-4xl font-bold text-gray-900 m-0 mb-3">{{ totalUsers }}</div>
+        <h3
+          class="text-sm font-semibold text-gray-500 m-0 mb-2 uppercase tracking-wide"
+        >
+          Total Users
+        </h3>
+        <div class="text-4xl font-bold text-gray-900 m-0 mb-3">
+          {{ totalUsers }}
+        </div>
         <div class="flex flex-wrap gap-3 text-xs text-gray-400">
           <span>{{ totalAdmins }} Admins</span>
           <span>{{ totalManagers }} Managers</span>
@@ -17,13 +26,23 @@
     </div>
 
     <!-- Ideas Card -->
-    <div class="bg-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-      <div class="text-5xl shrink-0"><img src="IdeasSVG.svg" alt="Ideas Icon" class="w-13 h-13"></div>
+    <div
+      class="bg-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+    >
+      <div class="text-5xl shrink-0">
+        <img src="IdeasSVG.svg" alt="Ideas Icon" class="w-13 h-13" />
+      </div>
       <div class="flex-1">
-        <h3 class="text-sm font-semibold text-gray-500 m-0 mb-2 uppercase tracking-wide">Total Ideas</h3>
-        <div class="text-4xl font-bold text-gray-900 m-0 mb-3">{{ totalIdeas }}</div>
+        <h3
+          class="text-sm font-semibold text-gray-500 m-0 mb-2 uppercase tracking-wide"
+        >
+          Total Ideas
+        </h3>
+        <div class="text-4xl font-bold text-gray-900 m-0 mb-3">
+          {{ totalIdeas }}
+        </div>
         <div class="flex flex-wrap gap-3 text-xs text-gray-400">
-          <span>{{ draftIdeas }} Draft</span>
+          <span>{{ rejectedIdeas }} Rejected</span>
           <span>{{ underReviewIdeas }} In Review</span>
           <span>{{ approvedIdeas }} Approved</span>
         </div>
@@ -31,11 +50,21 @@
     </div>
 
     <!-- Categories Card -->
-    <div class="bg-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-      <div class="text-5xl shrink-0"><img src="CategorySVG.svg" alt="Category Icon" class="w-12 h-12"></div>
+    <div
+      class="bg-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+    >
+      <div class="text-5xl shrink-0">
+        <img src="CategorySVG.svg" alt="Category Icon" class="w-12 h-12" />
+      </div>
       <div class="flex-1">
-        <h3 class="text-sm font-semibold text-gray-500 m-0 mb-2 uppercase tracking-wide">Categories</h3>
-        <div class="text-4xl font-bold text-gray-900 m-0 mb-3">{{ totalCategories }}</div>
+        <h3
+          class="text-sm font-semibold text-gray-500 m-0 mb-2 uppercase tracking-wide"
+        >
+          Categories
+        </h3>
+        <div class="text-4xl font-bold text-gray-900 m-0 mb-3">
+          {{ totalCategories }}
+        </div>
         <div class="flex flex-wrap gap-3 text-xs text-gray-400">
           <span>{{ activeCategories }} Active</span>
           <span>{{ totalCategories - activeCategories }} Inactive</span>
@@ -44,11 +73,21 @@
     </div>
 
     <!-- Approval Rate Card -->
-    <div class="bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-      <div class="text-5xl shrink-0"><img src="Tick.svg" alt="Tick Icon" class="w-12 h-12"></div>
+    <div
+      class="bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-xl p-6 shadow-sm flex gap-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+    >
+      <div class="text-5xl shrink-0">
+        <img src="Tick.svg" alt="Tick Icon" class="w-12 h-12" />
+      </div>
       <div class="flex-1">
-        <h3 class="text-sm font-semibold text-white text-opacity-90 m-0 mb-2 uppercase tracking-wide">Approval Rate</h3>
-        <div class="text-4xl font-bold text-white m-0 mb-3">{{ approvalRate }}%</div>
+        <h3
+          class="text-sm font-semibold text-white text-opacity-90 m-0 mb-2 uppercase tracking-wide"
+        >
+          Approval Rate
+        </h3>
+        <div class="text-4xl font-bold text-white m-0 mb-3">
+          {{ approvalRate }}%
+        </div>
         <div class="flex flex-wrap gap-3 text-xs text-white text-opacity-80">
           <span>{{ approvedIdeas }} of {{ totalIdeas }} ideas approved</span>
         </div>
@@ -60,13 +99,22 @@
   <div class="mb-12">
     <h2 class="text-2xl font-semibold text-gray-900 m-0 mb-4">Quick Actions</h2>
     <div class="flex gap-4 flex-wrap">
-      <a routerLink="/admin/categories" class="px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-200 border-none no-underline inline-flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600">
+      <a
+        routerLink="/admin/categories"
+        class="px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-200 border-none no-underline inline-flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600"
+      >
         Manage Categories
       </a>
-      <a routerLink="/admin/manageusers" class="px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-200 border-none no-underline inline-flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600">
+      <a
+        routerLink="/admin/manageusers"
+        class="px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-200 border-none no-underline inline-flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600"
+      >
         Manage Users
       </a>
-      <a routerLink="/admin/reports" class="px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-200 border-none no-underline inline-flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600">
+      <a
+        routerLink="/admin/reports"
+        class="px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-200 border-none no-underline inline-flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600"
+      >
         Reports
       </a>
     </div>
@@ -76,14 +124,30 @@
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
     <div>
       <h2 class="text-xl font-semibold text-gray-900 m-0 mb-4">Recent Ideas</h2>
-      <div class="bg-white rounded-xl shadow-sm overflow-hidden" *ngIf="recentIdeas.length > 0; else noIdeas">
-        <div *ngFor="let idea of recentIdeas" class="flex gap-4 p-4 border-b border-gray-100 transition-colors duration-200 hover:bg-gray-50">
-          <div class="text-2xl shrink-0"><img src="IdeasSVG.svg" alt="Ideas Icon" class="w-7 h-7"></div>
+      <div
+        class="bg-white rounded-xl shadow-sm overflow-hidden"
+        *ngIf="recentIdeas.length > 0; else noIdeas"
+      >
+        <div
+          *ngFor="let idea of recentIdeas"
+          class="flex gap-4 p-4 border-b border-gray-100 transition-colors duration-200 hover:bg-gray-50"
+        >
+          <div class="text-2xl shrink-0">
+            <img src="IdeasSVG.svg" alt="Ideas Icon" class="w-7 h-7" />
+          </div>
           <div class="flex-1 min-w-0">
-            <div class="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap">{{ idea.title }}</div>
+            <div
+              class="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              {{ idea.title }}
+            </div>
             <div class="flex gap-3 items-center text-xs">
-              <span [class]="getStatusClass(idea.status)">{{ idea.status }}</span>
-              <span class="text-gray-500">{{ idea.submittedDate | date: 'short' }}</span>
+              <span [class]="getStatusClass(idea.status)">{{
+                idea.status
+              }}</span>
+              <span class="text-gray-500">{{
+                idea.submittedDate | date: "short"
+              }}</span>
             </div>
           </div>
         </div>
@@ -95,11 +159,23 @@
 
     <div>
       <h2 class="text-xl font-semibold text-gray-900 m-0 mb-4">Recent Users</h2>
-      <div class="bg-white rounded-xl shadow-sm overflow-hidden" *ngIf="recentUsers.length > 0; else noUsers">
-        <div *ngFor="let user of recentUsers" class="flex gap-4 p-4 border-b border-gray-100 transition-colors duration-200 hover:bg-gray-50">
-          <div class="text-2xl shrink-0"><img src="Employee.svg" alt="User Icon" class="w-6 h-6"></div>
+      <div
+        class="bg-white rounded-xl shadow-sm overflow-hidden"
+        *ngIf="recentUsers.length > 0; else noUsers"
+      >
+        <div
+          *ngFor="let user of recentUsers"
+          class="flex gap-4 p-4 border-b border-gray-100 transition-colors duration-200 hover:bg-gray-50"
+        >
+          <div class="text-2xl shrink-0">
+            <img src="Employee.svg" alt="User Icon" class="w-6 h-6" />
+          </div>
           <div class="flex-1 min-w-0">
-            <div class="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap">{{ user.name }}</div>
+            <div
+              class="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              {{ user.name }}
+            </div>
             <div class="flex gap-3 items-center text-xs">
               <span [class]="getRoleClass(user.role)">{{ user.role }}</span>
               <span class="text-gray-500">{{ user.department }}</span>

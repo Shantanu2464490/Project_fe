@@ -23,11 +23,11 @@ export class DecisionComponent implements OnInit {
   currentUserID = 0;
   currentUserName = '';
   comments: Comment[] = [];
-  filterStatus: 'All' | 'Draft' | 'UnderReview' | 'Approved' = 'All';
+  filterStatus: 'All' | 'Rejected' | 'UnderReview' | 'Approved' = 'All';
   isLoading = false;
-  statusOptions: ('All' | 'Draft' | 'UnderReview' | 'Approved')[] = [
+  statusOptions: ('All' | 'Rejected' | 'UnderReview' | 'Approved')[] = [
     'All',
-    'Draft',
+    'Rejected',
     'UnderReview',
     'Approved',
   ];
@@ -81,7 +81,7 @@ export class DecisionComponent implements OnInit {
     });
   }
 
-  filterByStatus(status: 'All' | 'Draft' | 'UnderReview' | 'Approved') {
+  filterByStatus(status: 'All' | 'Rejected' | 'UnderReview' | 'Approved') {
     this.filterStatus = status;
   }
 
@@ -148,7 +148,7 @@ export class DecisionComponent implements OnInit {
       });
   }
 
-  changeStatus(status: 'Draft' | 'UnderReview' | 'Approved') {
+  changeStatus(status: 'UnderReview' | 'Approved' | 'Rejected') {
     if (!this.selected) return;
 
     if (

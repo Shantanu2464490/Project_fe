@@ -1,17 +1,38 @@
 <div class="container mx-auto px-4 py-12 max-w-2xl pt-20">
   <div class="mb-8 pl-1">
-    <a routerLink="/employee/dashboard" class="inline-flex items-center text-gray-500 hover:text-(--blue-500) transition-colors mb-4 text-sm font-medium">
-      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+    <a
+      routerLink="/employee/dashboard"
+      class="inline-flex items-center text-gray-500 hover:text-(--blue-500) transition-colors mb-4 text-sm font-medium"
+    >
+      <svg
+        class="w-4 h-4 mr-1"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+        ></path>
+      </svg>
       Back to Dashboard
     </a>
-    <h1 class="text-3xl font-extrabold tracking-tight" style="color: var(--blue-500);">Pitch Your Idea</h1>
+    <h1
+      class="text-3xl font-extrabold tracking-tight"
+      style="color: var(--blue-500)"
+    >
+      Pitch Your Idea
+    </h1>
     <p class="text-gray-600 mt-2">Share your innovation with the team.</p>
   </div>
 
-  <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
+  <div
+    class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100"
+  >
     <div class="p-8 sm:p-10">
       <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-8">
-        
         <!-- Title -->
         <div class="space-y-2">
           <label class="block text-sm font-bold text-gray-700">
@@ -21,18 +42,37 @@
             formControlName="title"
             placeholder="e.g., Automated Client Onboarding"
             class="w-full px-4 py-3 bg-(--blue-50) border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-(--blue-300) focus:border-transparent transition-all placeholder-gray-400 text-gray-900 font-medium"
-            [class.ring-2]="form.get('title')?.invalid && form.get('title')?.touched"
-            [class.ring-red-500]="form.get('title')?.invalid && form.get('title')?.touched"
+            [class.ring-2]="
+              form.get('title')?.invalid && form.get('title')?.touched
+            "
+            [class.ring-red-500]="
+              form.get('title')?.invalid && form.get('title')?.touched
+            "
           />
-          <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched" class="text-red-500 text-sm flex items-center mt-1">
-             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-             Title is required.
+          <div
+            *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+            class="text-red-500 text-sm flex items-center mt-1"
+          >
+            <svg
+              class="w-4 h-4 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            Title is required.
           </div>
         </div>
 
         <!-- Description -->
         <div class="space-y-2">
-           <label class="block text-sm font-bold text-gray-700">
+          <label class="block text-sm font-bold text-gray-700">
             Description <span class="text-red-500">*</span>
           </label>
           <textarea
@@ -40,48 +80,116 @@
             rows="6"
             placeholder="Describe the problem, your solution, and the expected impact..."
             class="w-full px-4 py-3 bg-(--blue-50) border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-(--blue-300) focus:border-transparent transition-all placeholder-gray-400 text-gray-900 leading-relaxed"
-            [class.ring-2]="form.get('description')?.invalid && form.get('description')?.touched"
-            [class.ring-red-500]="form.get('description')?.invalid && form.get('description')?.touched"
+            [class.ring-2]="
+              form.get('description')?.invalid &&
+              form.get('description')?.touched
+            "
+            [class.ring-red-500]="
+              form.get('description')?.invalid &&
+              form.get('description')?.touched
+            "
           ></textarea>
-           <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched" class="text-red-500 text-sm flex items-center mt-1">
-             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-             Please provide at least 10 characters.
+          <div
+            *ngIf="
+              form.get('description')?.invalid &&
+              form.get('description')?.touched
+            "
+            class="text-red-500 text-sm flex items-center mt-1"
+          >
+            <svg
+              class="w-4 h-4 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            Please provide at least 10 characters.
           </div>
         </div>
 
         <!-- Category -->
         <div class="space-y-2">
-          <label class="block text-sm font-bold text-gray-700">Category<span class="text-red-500">*</span></label>
+          <label class="block text-sm font-bold text-gray-700"
+            >Category<span class="text-red-500">*</span></label
+          >
           <div class="relative">
-             <select
+            <select
               formControlName="categoryID"
               class="w-full appearance-none px-4 py-3 bg-(--blue-50) border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-(--blue-300) focus:border-transparent transition-all text-gray-900 cursor-pointer"
-              [class.ring-2]="form.get('categoryID')?.invalid && form.get('categoryID')?.touched"
-              [class.ring-red-500]="form.get('categoryID')?.invalid && form.get('categoryID')?.touched"
+              [class.ring-2]="
+                form.get('categoryID')?.invalid &&
+                form.get('categoryID')?.touched
+              "
+              [class.ring-red-500]="
+                form.get('categoryID')?.invalid &&
+                form.get('categoryID')?.touched
+              "
             >
               <option value="" disabled selected>Select a category...</option>
               <option *ngFor="let cat of categories" [value]="cat.categoryID">
                 {{ cat.name }}
               </option>
             </select>
-             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500"
+            >
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
             </div>
           </div>
-          <div *ngIf="form.get('categoryID')?.invalid && form.get('categoryID')?.touched" class="text-red-500 text-sm flex items-center mt-1">
-             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-             Category is required.
+          <div
+            *ngIf="
+              form.get('categoryID')?.invalid && form.get('categoryID')?.touched
+            "
+            class="text-red-500 text-sm flex items-center mt-1"
+          >
+            <svg
+              class="w-4 h-4 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            Category is required.
           </div>
         </div>
 
         <!-- Manager Status Override (Conditional) -->
-        <div *ngIf="currentRole === 'manager'" class="p-4 bg-yellow-50 rounded-xl border border-yellow-200">
-          <label class="block text-sm font-bold text-yellow-800 mb-2">Initial Status (Manager Override)</label>
+        <div
+          *ngIf="currentRole === 'manager'"
+          class="p-4 bg-yellow-50 rounded-xl border border-yellow-200"
+        >
+          <label class="block text-sm font-bold text-yellow-800 mb-2"
+            >Initial Status (Manager Override)</label
+          >
           <select
             formControlName="status"
             class="w-full px-3 py-2 bg-white border border-yellow-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm text-gray-900"
           >
-            <option value="Draft">Draft</option>
+            <option value="Rejected">Rejected</option>
             <option value="UnderReview">Under Review</option>
             <option value="Approved">Approved</option>
           </select>
@@ -100,7 +208,7 @@
             type="submit"
             [disabled]="form.invalid"
             class="flex-1 px-6 py-3 text-white rounded-xl font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-(--blue-500) disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            style="background-color: var(--blue-500);"
+            style="background-color: var(--blue-500)"
           >
             Submit Idea
           </button>

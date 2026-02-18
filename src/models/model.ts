@@ -21,7 +21,7 @@ export interface Idea {
   userID: number;
   authorName?: string;
   submittedDate: string;
-  status: 'Draft' | 'UnderReview' | 'Approved';
+  status: 'Rejected' | 'UnderReview' | 'Approved';
   category?: string;
   upvotes?: number;
   downvotes?: number;
@@ -33,7 +33,7 @@ export interface Review {
   reviewerID: number;
   reviewerName?: string;
   feedback: string;
-  decision: 'Approve' | 'Reject';
+  decision: 'Approved' | 'Rejected';
   reviewDate?: string;
 }
 

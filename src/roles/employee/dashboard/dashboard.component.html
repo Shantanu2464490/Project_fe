@@ -72,7 +72,7 @@
               <span
                 class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider"
                 [ngClass]="{
-                  'bg-yellow-100 text-yellow-700': idea.status === 'Draft',
+                  'bg-yellow-100 text-yellow-700': idea.status === 'Rejected',
                   'bg-(--blue-100) text-(--blue-500)':
                     idea.status === 'UnderReview',
                   'bg-green-100 text-green-700': idea.status === 'Approved',
@@ -171,8 +171,8 @@
               <div class="flex justify-between mb-1">
                 <span class="font-semibold">{{ r.reviewerName }}</span>
                 <span
-                  [class.text-green-600]="r.decision === 'Approve'"
-                  [class.text-red-600]="r.decision === 'Reject'"
+                  [class.text-green-600]="r.decision === 'Approved'"
+                  [class.text-red-600]="r.decision === 'Rejected'"
                   >{{ r.decision }}</span
                 >
               </div>
