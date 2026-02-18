@@ -148,7 +148,7 @@
               (click)="showUpvoters()"
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 hover:bg-green-100 text-gray-600 hover:text-green-600 transition-colors cursor-pointer"
               title="View upvoters"
-              *ngIf="getVotersForIdea(idea.ideaID).upvoters.length > 0"
+              *ngIf="getVotersForIdea(idea.ideaID).upvoters.length > 0 && selected?.ideaID === idea.ideaID"
             >
               <div class="flex items-center">
                 <img src="Like.svg" alt="Like Icon" class="w-4 h-4" />
@@ -157,7 +157,7 @@
             </button>
 
             <button
-              *ngIf="getVotersForIdea(idea.ideaID).upvoters.length === 0"
+              *ngIf="getVotersForIdea(idea.ideaID).upvoters.length === 0 || selected?.ideaID !== idea.ideaID"
               disabled
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 text-gray-400 cursor-not-allowed"
             >
@@ -175,7 +175,7 @@
               (click)="showDownvoters()"
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 transition-colors cursor-pointer"
               title="View downvoters"
-              *ngIf="getVotersForIdea(idea.ideaID).downvoters.length > 0"
+              *ngIf="getVotersForIdea(idea.ideaID).downvoters.length > 0 && selected?.ideaID === idea.ideaID"
             >
               <div class="flex items-center">
                 <img src="disLike.svg" alt="disLike Icon" class="w-4 h-4" />
@@ -184,7 +184,7 @@
             </button>
 
             <button
-              *ngIf="getVotersForIdea(idea.ideaID).downvoters.length === 0"
+              *ngIf="getVotersForIdea(idea.ideaID).downvoters.length === 0 || selected?.ideaID !== idea.ideaID"
               disabled
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 text-gray-400 cursor-not-allowed"
             >

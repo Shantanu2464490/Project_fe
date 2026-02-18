@@ -22,7 +22,7 @@ import {
 })
 export class MyIdeas implements OnInit {
   ideas: Idea[] = [];
-  filterStatus: 'All' | 'Draft' | 'UnderReview' | 'Approved'= 'All';
+  filterStatus: 'All' | 'Draft' | 'UnderReview' | 'Approved' = 'All';
 
   selected: Idea | null = null;
   comments: IdeaComment[] = [];
@@ -79,6 +79,12 @@ export class MyIdeas implements OnInit {
   selectIdea(idea: Idea) {
     this.selected = idea;
 
+    // Clear previous data
+    this.comments = [];
+    this.reviews = [];
+    this.currentUpvoters = [];
+    this.currentDownvoters = [];
+
     // Load comments from backend
     this.ideaService.getCommentsForIdea(idea.ideaID).subscribe({
       next: (comments: IdeaComment[]) => {
@@ -118,17 +124,23 @@ export class MyIdeas implements OnInit {
         // Store in map for this idea
         this.votersMap.set(ideaID, { upvoters, downvoters });
 
-        // Update current voters (for modal)
-        this.currentUpvoters = upvoters;
-        this.currentDownvoters = downvoters;
+        // Update current voters only if this is the selected idea
+        if (this.selected?.ideaID === ideaID) {
+          this.currentUpvoters = upvoters;
+          this.currentDownvoters = downvoters;
+        }
 
         console.log('Stored voters for idea', ideaID, { upvoters, downvoters });
       },
       error: (error: any) => {
         console.error('Error loading voters:', error);
         this.votersMap.set(ideaID, { upvoters: [], downvoters: [] });
-        this.currentUpvoters = [];
-        this.currentDownvoters = [];
+
+        // Only clear current voters if this is the selected idea
+        if (this.selected?.ideaID === ideaID) {
+          this.currentUpvoters = [];
+          this.currentDownvoters = [];
+        }
       },
     });
   }
@@ -137,13 +149,23 @@ export class MyIdeas implements OnInit {
   }
 
   showUpvoters() {
-    this.votersModalTitle = 'Upvoted by';
-    this.showVotersModal = true;
+    if (this.selected) {
+      const voters = this.getVotersForIdea(this.selected.ideaID);
+      this.currentUpvoters = voters.upvoters;
+      this.currentDownvoters = [];
+      this.votersModalTitle = 'Upvoted by';
+      this.showVotersModal = true;
+    }
   }
 
   showDownvoters() {
-    this.votersModalTitle = 'Downvoted by';
-    this.showVotersModal = true;
+    if (this.selected) {
+      const voters = this.getVotersForIdea(this.selected.ideaID);
+      this.currentUpvoters = [];
+      this.currentDownvoters = voters.downvoters;
+      this.votersModalTitle = 'Downvoted by';
+      this.showVotersModal = true;
+    }
   }
 
   closeVotersModal() {
