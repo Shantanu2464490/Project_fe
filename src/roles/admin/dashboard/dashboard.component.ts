@@ -125,15 +125,40 @@ export class DashboardComponent implements OnInit {
   }
 
   loadRecentIdeas(): void {
-    // Get 5 most recent ideas
-    this.ideaService.getAllIdeas().subscribe((ideas) => {
-      this.recentIdeas = ideas
-        .sort((a, b) => {
-          const dateA = new Date(a.submittedDate).getTime();
-          const dateB = new Date(b.submittedDate).getTime();
-          return dateB - dateA;
-        })
-        .slice(0, 5);
+    // Get 5 most recent ideas from reports service
+    this.reportsService.getRecentIdeas(5).subscribe({
+      next: (ideas) => {
+        this.recentIdeas = ideas;
+        console.log('Recent ideas loaded successfully:', ideas);
+      },
+      error: (error) => {
+        console.error(
+          'Error loading recent ideas from reports endpoint:',
+          error,
+        );
+        // Fallback to getting all ideas and sorting by most recent
+        this.loadRecentIdeasFallback();
+      },
+    });
+  }
+
+  private loadRecentIdeasFallback(): void {
+    // Fallback: Get all ideas and sort by submission date
+    this.ideaService.getAllIdeas().subscribe({
+      next: (ideas) => {
+        this.recentIdeas = ideas
+          .sort((a, b) => {
+            const dateA = new Date(a.submittedDate).getTime();
+            const dateB = new Date(b.submittedDate).getTime();
+            return dateB - dateA;
+          })
+          .slice(0, 5);
+        console.log('Recent ideas loaded from fallback:', this.recentIdeas);
+      },
+      error: (error) => {
+        console.error('Error loading recent ideas from fallback:', error);
+        this.recentIdeas = [];
+      },
     });
   }
 

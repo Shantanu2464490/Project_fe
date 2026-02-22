@@ -143,6 +143,60 @@ export class ReportsService {
   }
 
   /**
+   * Get recent ideas (latest 5 ideas by submission date)
+   * Uses /api/reports/ideas/latest endpoint
+   * Returns the 5 most recent ideas without date range filtering
+   */
+  getRecentIdeas(limit: number = 5): Observable<Idea[]> {
+    const url = `${this.apiUrl}/reports/ideas/latest`;
+
+    return this.http.get<any[]>(url).pipe(
+      tap((data) => console.log('Recent ideas:', data)),
+      map((data) => {
+        // Map API response to local Idea model
+        if (Array.isArray(data) && data.length > 0) {
+          return (data as any[])
+            .map((idea) => this.mapLatestIdeasResponse(idea))
+            .slice(0, limit);
+        }
+        return [];
+      }),
+    );
+  }
+
+  /**
+   * Helper method to map API idea response to local Idea model
+   */
+  private mapApiIdeaToLocal(idea: any): Idea {
+    return {
+      ideaID: idea.ideaId || idea.ideaID,
+      title: idea.title,
+      description: idea.description,
+      categoryID: idea.categoryId || idea.categoryID,
+      userID: idea.submittedByUserId || idea.userId || idea.userID,
+      authorName:
+        idea.submittedByUserName || idea.authorName || idea.userName || '',
+      submittedDate: idea.submittedDate || new Date().toISOString(),
+      status: idea.status || 'UnderReview',
+      category: idea.categoryName || idea.category || '',
+      upvotes: idea.upvotes || 0,
+      downvotes: idea.downvotes || 0,
+      reviewedByID: idea.reviewedByUserId || idea.reviewedByID,
+      reviewedByName: idea.reviewedByUserName || idea.reviewedByName,
+      reviewComment: idea.reviewComment,
+      Comments: idea.comments || [],
+      reviews: (idea.reviews || []).map((r: any) => ({
+        reviewID: r.reviewId || r.reviewID,
+        ideaID: r.ideaId || r.ideaID,
+        reviewerID: r.reviewerId || r.reviewerID,
+        reviewerName: r.reviewerName,
+        feedback: r.feedback,
+        reviewDate: r.reviewDate,
+      })),
+    } as Idea;
+  }
+
+  /**
    * GET /api/reports/users/activity
    * Get user activity statistics and engagement metrics
    */
@@ -264,5 +318,30 @@ export class ReportsService {
 
   private calculateApprovalRate(approved: number, total: number): number {
     return total > 0 ? Math.round((approved / total) * 100) : 0;
+  }
+
+  /**
+   * Helper method to map /api/reports/ideas/latest response to local Idea model
+   * Response fields: IdeaId, Title, Description, submittedBy, CategoryName, Status, SubmittedDate
+   */
+  private mapLatestIdeasResponse(idea: any): Idea {
+    return {
+      ideaID: idea.ideaId,
+      title: idea.title,
+      description: idea.description,
+      categoryID: 0, // Not provided in response
+      userID: 0, // Not provided in response
+      authorName: idea.submittedBy || '',
+      submittedDate: idea.submittedDate || new Date().toISOString(),
+      status: idea.status || 'UnderReview',
+      category: idea.categoryName || '',
+      upvotes: 0, // Not provided in response
+      downvotes: 0, // Not provided in response
+      reviewedByID: 0,
+      reviewedByName: undefined,
+      reviewComment: undefined,
+      Comments: [],
+      reviews: [],
+    };
   }
 }

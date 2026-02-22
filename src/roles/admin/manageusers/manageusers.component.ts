@@ -64,12 +64,7 @@ export class ManageusersComponent implements OnInit {
   applyFilters(): void {
     let filtered = [...this.users];
 
-    // Filter by role
-    if (this.filterRole !== 'All') {
-      filtered = filtered.filter((u) => u.role === this.filterRole);
-    }
-
-    // Filter by status
+    // Filter by status (role filtering is done via API in onFilterChange)
     if (this.filterStatus !== 'All') {
       filtered = filtered.filter((u) => u.status === this.filterStatus);
     }
@@ -88,23 +83,29 @@ export class ManageusersComponent implements OnInit {
   }
 
   onFilterChange(): void {
-    this.applyFilters();
-  }
-
-  onSearch(): void {
-    if (this.searchTerm.trim().length >= 2) {
-      this.userService.searchUsers(this.searchTerm).subscribe({
+    // If filtering by role, use the API endpoint for better performance
+    if (this.filterRole !== 'All') {
+      console.log('Fetching users by role:', this.filterRole);
+      this.userService.getUsersByRole(this.filterRole as UserRole).subscribe({
         next: (users) => {
-          this.filteredUsers = users;
+          console.log('Users fetched by role:', users);
+          this.users = users;
+          this.applyFilters();
         },
         error: (error) => {
-          console.error('Error searching users:', error);
+          console.error('Error loading users by role:', error);
           this.applyFilters(); // Fallback to local filtering
         },
       });
     } else {
-      this.applyFilters();
+      // If "All" is selected, reload all users
+      this.loadUsers();
     }
+  }
+
+  onSearch(): void {
+    // Always use local filtering for search - don't call API
+    this.applyFilters();
   }
 
   toggleUserStatus(user: User): void {

@@ -38,7 +38,7 @@ export interface UserDetails extends User {
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private users$ = new BehaviorSubject<User[]>([]);
-  private apiUrl = 'https://localhost:7175/api/usermanagement';
+  private apiUrl = 'https://localhost:7175/api/UserManagement';
 
   constructor(private http: HttpClient) {}
 
