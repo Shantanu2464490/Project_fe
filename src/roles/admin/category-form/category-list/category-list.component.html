@@ -76,18 +76,18 @@
                   {{ category.isActive ? 'Active' : 'Inactive' }}
                 </span>
               </td>
-              <td class="px-5 py-4">
-                <div class="flex flex-wrap gap-2">
+              <td class="px-5 py-4 align-middle">
+                <div class="flex items-center gap-2 flex-nowrap">
                   <button
                     (click)="openEditForm(category)"
-                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition min-w-24"
+                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition whitespace-nowrap flex-shrink-0"
                     title="Edit category"
                   >
                     Edit
                   </button>
                   <button
                     (click)="toggleStatus(category)"
-                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-white transition min-w-28"
+                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-white transition whitespace-nowrap flex-shrink-0 w-28"
                     [ngClass]="category.isActive ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-500 hover:bg-emerald-600'"
                     title="Toggle status"
                   >
@@ -95,7 +95,7 @@
                   </button>
                   <button
                     (click)="promptDelete(category)"
-                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-white bg-red-500 hover:bg-red-600 transition min-w-24"
+                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-white bg-red-500 hover:bg-red-600 transition whitespace-nowrap flex-shrink-0"
                     title="Delete category"
                   >
                     Delete
